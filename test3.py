@@ -8,4 +8,10 @@ class aag():
 
 ba = aag()
 ba.add('aaaaa')
-print(ba.ll)
+
+
+
+stone={'Name':'minecraft:stone','tag':'stone','Properties':{'variant':'stone'}}
+
+
+print(len(stone))
