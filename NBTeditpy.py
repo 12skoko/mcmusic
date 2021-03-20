@@ -76,9 +76,6 @@ class NBTedit:
         if 'nbt' in block:
             nbtt = nbt.TAG_Compound()
             nbtt.name = 'nbt'
-            nbtt.tags.append(nbt.TAG_String(name='i', value='block[][i])'))
-            nbtt.tags.append(nbt.TAG_Long(name='i2', value=123321))
-            nbtt.tags.append(nbt.TAG_String(name='i3', value='block[][i])'))
 
             for i in block['nbt']:
                 if '_type' not in i:
@@ -86,7 +83,7 @@ class NBTedit:
                     if tagtype == 'String':
                         nbtt.tags.append(nbt.TAG_String(name=i, value=block['nbt'][i]))
                     elif tagtype == 'Byte':
-                        nbtt.tags.append(nbt.TAG_Long(name=i, value=block['nbt'][i]))
+                        nbtt.tags.append(nbt.TAG_Byte(name=i, value=block['nbt'][i]))
                     elif tagtype == 'Int':
                         nbtt.tags.append(nbt.TAG_Int(name=i, value=block['nbt'][i]))
                     elif tagtype == 'Long':
@@ -111,7 +108,7 @@ class NBTedit:
                                       'Command_type': 'String',
                                       'auto': type[3],
                                       'auto_type': 'Byte',
-                                      'id': 'minecraft:commond_block',
+                                      'id': 'minecraft:command_block',
                                       'id_type': 'String',
                                       # 'CustomName':'@',
                                       # 'CustomName_type': 'String',
