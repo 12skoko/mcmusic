@@ -1,0 +1,6 @@
+/execute @p ~ ~ ~ playsound 4.60 voice @p ~ ~ ~
+
+
+
+clone ~ ~ ~-1 ~ ~ ~-1 ~+1 ~ ~-1 replace move
+
