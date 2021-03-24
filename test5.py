@@ -32,7 +32,7 @@ mid = MidiFile('2.mid')
 
 xz = [0,0]
 
-nn = NBTeditpy.NBTedit('12skoko', [200, 1, 8])
+# nn = NBTeditpy.NBTedit('12skoko', [200, 1, 8])
 
 
 
@@ -65,7 +65,7 @@ for i, track in enumerate(mid.tracks):
             #         xz[1] = 0
             if 'note_on' in msgdict['type']:
                 print('\033[1;31m' + str(msg) + '\033[0m')
-                nn.setcommandblock([xz[0], 0, xz[1]], 'execute @p ~ ~ ~ playsound 4.'+str(msgdict['note'])+' voice @p ~ ~ ~ '+str(msgdict['velocity']/128.0), [1, 0, 1, 1])
+                # nn.setcommandblock([xz[0], 0, xz[1]], 'execute @p ~ ~ ~ playsound 4.'+str(msgdict['note'])+' voice @p ~ ~ ~ '+str(msgdict['velocity']/128.0), [1, 0, 1, 1])
             elif 'note_off' in msgdict['type']:
                 print('\033[1;34m' + str(msg) + '\033[0m')
             elif msgdict['time']!=0:
@@ -75,4 +75,4 @@ for i, track in enumerate(mid.tracks):
             k=1
             msglast=msgdict
 # nn.printNBT()
-nn.saveNBT('t2.nbt')
+# nn.saveNBT('t2.nbt')
