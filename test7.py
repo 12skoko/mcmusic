@@ -1,7 +1,7 @@
 import NBTeditpy
 import readmidi
 
-mid=readmidi.Readmidi_koi('koi.mid')
+mid=readmidi.Readmidi_majo('Literature (Full ver.).mid')
 
 note=mid.readmidi()
 
@@ -30,4 +30,4 @@ for i in range(len(note)):
     nn.setcommandblock([x, y, z],'execute @p ~ ~ ~ playsound '+str(note[i]['chet'])+'.' + str(note[i]['note']) + ' voice @p ~ ~ ~ ' + str(note[i]['velocity'] / 128.0), [1, 0, 4, 1])
 
 
-nn.saveNBT('t6.nbt')
+nn.saveNBT('t7.nbt')

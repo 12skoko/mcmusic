@@ -6,7 +6,9 @@ def chettype(num):
         return 8
     elif num >= 4 and num <= 15:
         return 4
-    elif num >= 16:
+    elif num >= 16 and num <=39:
+        return 2
+    elif num >=40:
         return 1
 
 
@@ -45,7 +47,7 @@ def vaguemun(num):
     # elif num >= 374 and num <= 394:
     #     return 8
     # elif num >= 400:
-        return int(round(num/80,0))
+    return int(round(num/16,0))
     # else:
     #     print(num)
     #     exit(65424)
