@@ -1,7 +1,7 @@
 from mido import MidiFile
 
 
-mid = MidiFile('Literature (Full ver.).mid')
+mid = MidiFile('Koi no Uta_HalcyonMusic.mid')
 
 
 for i, track in enumerate(mid.tracks):

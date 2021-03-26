@@ -45,34 +45,66 @@ def vaguemun(num):
     # elif num >= 374 and num <= 394:
     #     return 8
     # elif num >= 400:
-        return int(round(num/16,0))
+        return int(round(num/80,0))
     # else:
     #     print(num)
     #     exit(65424)
 
 
-class Readmidi:
+
+class Readmidi_majo:
     def __init__(self, path):
         self.mid = MidiFile(path)
         self.musicnote = []
         self.nowon = []
         self.blocktime = 0
+        self.time=0
 
     def readmidi(self):
         for i, track in enumerate(self.mid.tracks):
             for msg in track:
                 msgdict = msg.dict()
+                self.time+=int(msgdict['time'])
                 self.blocktime += vaguemun(int(msgdict['time']))
                 if 'note_off' in msgdict['type']:
                     for i in self.nowon:
                         if i['note'] == msgdict['note']:
                             musicnoteinfo = {'note': msgdict['note'], 'velocity': i['velocity'],
-                                             'chet': chettype(self.blocktime - i['time']), 'time': i['time']}
+                                             'chet': chettype(self.blocktime - i['blocktime']), 'time': i['time']}
                             self.musicnote.append(musicnoteinfo)
                             temp = i
                             self.nowon.remove(temp)
                             break
                 if 'note_on' in msgdict['type']:
-                    noteinfo = {'note': msgdict['note'], 'velocity': msgdict['velocity'], 'time': self.blocktime}
+                    noteinfo = {'note': msgdict['note'], 'velocity': msgdict['velocity'], 'time': vaguemun(self.time),'blocktime': self.blocktime}
+                    self.nowon.append(noteinfo)
+        return sorted(self.musicnote, key=lambda x: x['time'])
+
+
+class Readmidi_koi:
+    def __init__(self, path):
+        self.mid = MidiFile(path)
+        self.musicnote = []
+        self.nowon = []
+        self.blocktime = 0
+        self.time=0
+
+    def readmidi(self):
+        for i, track in enumerate(self.mid.tracks):
+            for msg in track:
+                msgdict = msg.dict()
+                self.time+=int(msgdict['time'])
+                self.blocktime += vaguemun(int(msgdict['time']))
+                if 'note_on' in msgdict['type'] and msgdict['velocity']==0:
+                    for i in self.nowon:
+                        if i['note'] == msgdict['note']:
+                            musicnoteinfo = {'note': msgdict['note'], 'velocity': i['velocity'],
+                                             'chet': chettype(self.blocktime - i['blocktime']), 'time': i['time']}
+                            self.musicnote.append(musicnoteinfo)
+                            temp = i
+                            self.nowon.remove(temp)
+                            break
+                if 'note_on' in msgdict['type'] and msgdict['velocity']!=0:
+                    noteinfo = {'note': msgdict['note'], 'velocity': msgdict['velocity'], 'time': vaguemun(self.time),'blocktime': self.blocktime}
                     self.nowon.append(noteinfo)
         return sorted(self.musicnote, key=lambda x: x['time'])
