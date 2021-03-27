@@ -2,9 +2,9 @@ from nbt import *
 
 
 class NBTedit:
-    def __init__(self, author, sizes):
+    def __init__(self, sizes, author='12skoko'):
         self.nnn = nbt.NBTFile()
-        self.create(author, sizes)
+        self.create(sizes, author)
         self.size = [sizes[0], sizes[1], sizes[2]]
         self.blocktags = {'air': 0}
 
@@ -13,7 +13,7 @@ class NBTedit:
                        {0: 'east', 1: 'south', 2: 'west', 3: 'north', 4: 'up', 5: 'down', }
                        ]
 
-    def create(self, author, sizes):
+    def create(self, sizes, author):
         self.nnn.tags.append(nbt.TAG_String(name="author", value=author))
         self.nnn.tags.append(nbt.TAG_Int(name="DataVersion", value=1))
         entities = nbt.TAG_List(name='entities', type=nbt.TAG_Byte)
@@ -98,8 +98,7 @@ class NBTedit:
 
             self.nnn['blocks'][num].tags.append(nbtt)
 
-
-    def removeblock(self,coor):
+    def removeblock(self, coor):
         num = self.Calcoor(coor)
         self.nnn['blocks'][num]['state'].value = 0
         try:
@@ -107,7 +106,7 @@ class NBTedit:
         except:
             pass
 
-    def setcommandblock(self, coor, command, type):
+    def setcommandblock(self, coor, command, type, name='@'):
         typestr = 'cb' + str(type[0]) + str(type[1]) + str(type[2]) + str(type[3])
         if typestr not in self.blocktags:
             cbnew = {'Name': self.cbtype[0][type[0]], 'tag': typestr,
@@ -119,8 +118,8 @@ class NBTedit:
                                       'auto_type': 'Byte',
                                       'id': 'minecraft:command_block',
                                       'id_type': 'String',
-                                      # 'CustomName':'@',
-                                      # 'CustomName_type': 'String',
+                                      'CustomName': name,
+                                      'CustomName_type': 'String',
                                       'powered': 0,
                                       'powered_type': 'Byte',
                                       'UpdateLastExecution': 1,
@@ -135,4 +134,3 @@ class NBTedit:
                                       'LastExecution_type': 'Long'
                                       }}
         self.setblock(coor, cb)
-

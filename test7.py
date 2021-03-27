@@ -10,7 +10,7 @@ note_num=len(note)
 for i in note:
     print(i)
 
-nn=NBTeditpy.NBTedit('12skoko',[500,10,16])
+nn=NBTeditpy.NBTedit([500,10,16])
 
 x=0
 z=0
