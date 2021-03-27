@@ -98,6 +98,15 @@ class NBTedit:
 
             self.nnn['blocks'][num].tags.append(nbtt)
 
+
+    def removeblock(self,coor):
+        num = self.Calcoor(coor)
+        self.nnn['blocks'][num]['state'].value = 0
+        try:
+            self.nnn['blocks'][num].tags.remove(self.nnn['blocks'][num]['nbt'])
+        except:
+            pass
+
     def setcommandblock(self, coor, command, type):
         typestr = 'cb' + str(type[0]) + str(type[1]) + str(type[2]) + str(type[3])
         if typestr not in self.blocktags:
