@@ -92,6 +92,8 @@ class NBTedit:
                         nbtt.tags.append(nbt.TAG_Float(name=i, value=block['nbt'][i]))
                     elif tagtype == 'Double':
                         nbtt.tags.append(nbt.TAG_Double(name=i, value=block['nbt'][i]))
+                    elif tagtype == 'Short':
+                        nbtt.tags.append(nbt.TAG_Short(name=i, value=block['nbt'][i]))
                     else:
                         print(i)
                         exit(66666)

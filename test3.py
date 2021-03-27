@@ -23,3 +23,5 @@ nn.setcommandblock([1, 1, 0], 'helloworld', [0, 0, 0, 0])
 nn.printNBT()
 # nn.saveNBT('h4.nbt')
 
+nn.saveNBT()
+
