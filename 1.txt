@@ -2,5 +2,13 @@
 
 
 
-clone ~ ~ ~-1 ~ ~ ~-1 ~+1 ~ ~-1 replace move
+clone ~ ~-1 ~ ~ ~-1 ~ ~ ~-1 ~+1 replace move
 
+
+
+/particleex endRod ~ 5 ~ tickParameter 1 0 1 1 240 0 0 0 0 5 x=t;y=-5*(2.5-t)*(2.5-t)+31.25 0.05 1
+
+
+
+
+/summon FallingSand 7 30 26 {TileID:152,Time:1,Riding:{id:ItemFrame}}

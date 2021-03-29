@@ -47,7 +47,7 @@ def vaguemun(num):
     # elif num >= 374 and num <= 394:
     #     return 8
     # elif num >= 400:
-    return int(round(num/16,0))
+    return int(round(num/8,0))
     # else:
     #     print(num)
     #     exit(65424)
